@@ -1,0 +1,68 @@
+[gd_scene load_steps=8 format=3 uid="uid://dk4e31ah7hvg2"]
+
+[ext_resource type="PackedScene" uid="uid://bsh7ks23jy7le" path="res://scenes/Starter_map.tscn" id="1_cdx55"]
+[ext_resource type="Script" path="res://scripts/stats_handler.gd" id="1_sgvjo"]
+[ext_resource type="Script" path="res://scripts/game_state_handler.gd" id="1_yd5tv"]
+[ext_resource type="PackedScene" uid="uid://b206yuatbiank" path="res://scenes/player.tscn" id="2_qwng5"]
+[ext_resource type="PackedScene" uid="uid://biwfrutcet27r" path="res://scenes/card_screen.tscn" id="3_rrcdf"]
+[ext_resource type="PackedScene" uid="uid://ben3puokfj7fj" path="res://scenes/ui_hud.tscn" id="3_wnwkd"]
+[ext_resource type="PackedScene" uid="uid://dx0i4rwcavm60" path="res://scenes/dialoge_area.tscn" id="4_l24x3"]
+
+[node name="Game" type="Node2D"]
+position = Vector2(21, 51)
+
+[node name="GameStateHandler" type="Node" parent="."]
+script = ExtResource("1_yd5tv")
+
+[node name="Card_timer" type="Timer" parent="GameStateHandler"]
+unique_name_in_owner = true
+
+[node name="StatsHandler" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("1_sgvjo")
+
+[node name="EnergyErode" type="Timer" parent="StatsHandler"]
+unique_name_in_owner = true
+
+[node name="Energy_Card_Screen" parent="." instance=ExtResource("3_rrcdf")]
+unique_name_in_owner = true
+visible = false
+label_Text = "You seem tired... Here, take this pill okay it will help you :>"
+button_1_Text = "Restart Back to previous day"
+button_2_Text = "Quit"
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+offset = Vector2(75, 35)
+transform = Transform2D(1, 0, 0, 1, 75, 35)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer"]
+offset_left = 20.0
+offset_top = 15.0
+offset_right = 107.0
+offset_bottom = 67.0
+
+[node name="Ui_hud" parent="CanvasLayer/VBoxContainer" instance=ExtResource("3_wnwkd")]
+layout_mode = 2
+
+[node name="Map" parent="." instance=ExtResource("1_cdx55")]
+position = Vector2(-6, 18)
+
+[node name="player" parent="." instance=ExtResource("2_qwng5")]
+position = Vector2(774, 318)
+
+[node name="Camera2D" type="Camera2D" parent="player"]
+position = Vector2(0, -1)
+zoom = Vector2(4, 4)
+position_smoothing_enabled = true
+
+[node name="FarmDiag" parent="." instance=ExtResource("4_l24x3")]
+position = Vector2(841, 182)
+scale = Vector2(0.8, 0.800001)
+dialog = "My First Farm :>"
+
+[node name="ExitHouseDiag2" parent="." instance=ExtResource("4_l24x3")]
+position = Vector2(884, 300)
+scale = Vector2(0.0956268, 0.123928)
+dialog = "I love my farm... mostly"
+
+[connection signal="timeout" from="StatsHandler/EnergyErode" to="StatsHandler" method="_on_energy_erode_timeout"]

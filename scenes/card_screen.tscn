@@ -1,0 +1,49 @@
+[gd_scene load_steps=2 format=3 uid="uid://biwfrutcet27r"]
+
+[ext_resource type="Script" path="res://scripts/Card_Screen.gd" id="1_vdfu6"]
+
+[node name="Card_Screen" type="CanvasLayer"]
+script = ExtResource("1_vdfu6")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.352941)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 100
+alignment = 1
+
+[node name="Main_text" type="Label" parent="ColorRect/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/outline_size = 0
+theme_override_font_sizes/font_size = 30
+text = "You have run out of energy :< ... Its okay we all fail sometimes
+
+I have the perfect answer... you just need some sleep..
+
+Have this pill okay :>"
+horizontal_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ColorRect/VBoxContainer"]
+layout_mode = 2
+
+[node name="mainButton_1" type="Button" parent="ColorRect/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Take the pill"
+
+[node name="mainButton_2" type="Button" parent="ColorRect/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Take the pill"
+
+[connection signal="pressed" from="ColorRect/VBoxContainer/VBoxContainer/mainButton_1" to="." method="_on_main_button_1_pressed"]
+[connection signal="pressed" from="ColorRect/VBoxContainer/VBoxContainer/mainButton_2" to="." method="_on_main_button_2_pressed"]

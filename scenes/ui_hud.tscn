@@ -1,0 +1,29 @@
+[gd_scene load_steps=3 format=3 uid="uid://ben3puokfj7fj"]
+
+[ext_resource type="PackedScene" uid="uid://bkpex8ohg5cto" path="res://scenes/healthbar.tscn" id="1_i10an"]
+[ext_resource type="PackedScene" uid="uid://sa7doslssw5s" path="res://scenes/energy_bar.tscn" id="2_43a0t"]
+
+[node name="Ui_hud" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Healthbar" parent="VBoxContainer" instance=ExtResource("1_i10an")]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+
+[node name="EnergyBar" parent="VBoxContainer" instance=ExtResource("2_43a0t")]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+theme_override_constants/separation = 10

@@ -1,0 +1,89 @@
+[gd_scene load_steps=13 format=3 uid="uid://b206yuatbiank"]
+
+[ext_resource type="Texture2D" uid="uid://suomrelvrcrx" path="res://assets/Sprout Lands - Sprites - Basic pack/Sprout Lands - Sprites - Basic pack/Characters/Basic Charakter Spritesheet.png" id="1_myngg"]
+[ext_resource type="Script" path="res://scripts/player_movement.gd" id="1_py22j"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ea2ii"]
+atlas = ExtResource("1_myngg")
+region = Rect2(0, 96, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w7t2b"]
+atlas = ExtResource("1_myngg")
+region = Rect2(48, 96, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_beasi"]
+atlas = ExtResource("1_myngg")
+region = Rect2(96, 96, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p2k0l"]
+atlas = ExtResource("1_myngg")
+region = Rect2(144, 96, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_voe6o"]
+atlas = ExtResource("1_myngg")
+region = Rect2(0, 144, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qh8l8"]
+atlas = ExtResource("1_myngg")
+region = Rect2(48, 144, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kpjnn"]
+atlas = ExtResource("1_myngg")
+region = Rect2(96, 144, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2kqfy"]
+atlas = ExtResource("1_myngg")
+region = Rect2(144, 144, 48, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_byseb"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ea2ii")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w7t2b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_beasi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p2k0l")
+}],
+"loop": true,
+"name": &"Walking_left",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_voe6o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qh8l8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kpjnn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2kqfy")
+}],
+"loop": true,
+"name": &"Walking_right",
+"speed": 6.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_s7qwv"]
+radius = 6.0
+
+[node name="player" type="CharacterBody2D"]
+collision_layer = 6
+collision_mask = 6
+script = ExtResource("1_py22j")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_byseb")
+animation = &"Walking_left"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 2)
+shape = SubResource("CircleShape2D_s7qwv")

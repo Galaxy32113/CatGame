@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://sa7doslssw5s"]
+
+[ext_resource type="Script" path="res://scripts/energy_bar.gd" id="1_mgt1y"]
+
+[node name="EnergyBar" type="HBoxContainer"]
+custom_minimum_size = Vector2(100, 50)
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/separation = 1
+script = ExtResource("1_mgt1y")

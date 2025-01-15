@@ -1,0 +1,36 @@
+[gd_scene load_steps=6 format=3 uid="uid://bkpex8ohg5cto"]
+
+[ext_resource type="Script" path="res://scripts/healthbar.gd" id="1_7lv0w"]
+[ext_resource type="Texture2D" uid="uid://rh8ttfki32ur" path="res://assets/Sprout Lands - UI Pack - Basic pack/Sprout Lands - UI Pack - Basic pack/Sprite sheets/Sprite sheet for Basic Pack.png" id="2_aojsq"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gdf61"]
+atlas = ExtResource("2_aojsq")
+region = Rect2(576.721, 111.6, 15.7999, 15.5605)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nfa8v"]
+atlas = ExtResource("2_aojsq")
+region = Rect2(593.986, 111.702, 15.8, 15.56)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_foveh"]
+atlas = ExtResource("2_aojsq")
+region = Rect2(609.893, 112.157, 15.8, 15.56)
+
+[node name="Healthbar" type="HBoxContainer"]
+offset_right = 539.0
+offset_bottom = 40.0
+script = ExtResource("1_7lv0w")
+
+[node name="Heart" type="TextureRect" parent="."]
+layout_mode = 2
+texture = SubResource("AtlasTexture_gdf61")
+expand_mode = 2
+
+[node name="HalfHeart" type="TextureRect" parent="."]
+layout_mode = 2
+texture = SubResource("AtlasTexture_nfa8v")
+expand_mode = 2
+
+[node name="DeadHeart" type="TextureRect" parent="."]
+layout_mode = 2
+texture = SubResource("AtlasTexture_foveh")
+expand_mode = 2
