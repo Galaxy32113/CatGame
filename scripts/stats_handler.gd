@@ -32,7 +32,7 @@ func _process(delta) -> void:
 
 func _notification(what: int) -> void:
 	if what == NOTIFICATION_WM_CLOSE_REQUEST:
-		print("meow")
+		print("The Game has closed")
 
 
 func _on_energy_erode_timeout() -> void:
